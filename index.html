@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPR Game</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        body{
+            background:#dce3de;
+            overflow: hidden;
+            margin-top: 30px;
+        }
+        h3,h4{
+            text-align: center;
+        }
+        .bton button{
+            display: block;
+            width:120px;
+            padding:2px 10px;
+            border-radius: 2px 10px;
+            font-size: 20px;
+            margin:auto;
+            margin-top: 5px;
+            border-color: white;
+        }
+        .bton button:hover{
+            border-radius: 2px 10px;
+            color:white;
+            background-color: black !important;
+        }
+        .display{
+            width:300px;
+            height: 250px;
+            margin:auto;
+            margin-top: 15px;
+            padding:10px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <h3>ROCK PAPER SCRISSORS</h3>
+    <h3>Game</h3>
+    <div class="bton">
+        <button onclick="rock()" style="background-color: red; color: white;">Rock</button>
+        <button onclick="paper()" style="background-color: blue; color: white;">Paper</button>
+        <button onclick="scrissors()" style="background-color :greenyellow">Scrissors</button>
+    </div>
+    <div class="display">
+        <h4>Score</h4>
+        <h5 style='float:left'>You : <span id='ys'>0</span></h5>
+        <h5 style='float:Right'>Computer : <span id='cs'>0</span></h5>
+        <br><br><br>
+        <div class= 'result'>
+            <h5>You Select : <span id='yselect'></span></h5>
+            <h5>Computer Select : <span id ='cselect'></span></h5>
+            <h5>Result : <span id='rs'></span></h5>
+        </div>
+    </div>
+</body>
+<script>
+var y_s=document.getElementById('ys');
+var c_s=document.getElementById('cs');
+var y_select=document.getElementById('yselect');
+var c_select=document.getElementById('cselect');
+var reslt=document.getElementById('rs');
+
+var res
+var n=0
+var c=0
+
+function decision(val1){
+    var rand=Math.floor(Math.random() * 3);
+    if (val1=="rock" && rand==0){
+        res="Both select same so Tie !!"
+    }
+    else if (val1=="rock" && rand==1){
+        res="Computer Win !!";
+        c++;
+    }
+    else if (val1=="rock" && rand==2){
+        res="You Win !!";
+        n++;
+    }
+    else if (val1=="paper" && rand==0){
+        res="You Win !!";
+        n++;
+    }
+    else if (val1=="paper" && rand==1){
+        res="Both select same so Tie !!"
+    }
+    else if (val1=="paper" && rand==2){
+        res="Computer Win !!";
+        c++;
+    }
+    else if (val1=="scrissors" && rand==0){
+        res="Computer Win !!";
+        c++;
+    }
+    else if (val1=="scrissors" && rand==1){
+        res="You Win !!";
+        n++;
+    }
+    else if (val1=="scrissors" && rand==2){
+        res="Both select same so Tie !!"
+    }
+    y_s.innerText=n;
+    c_s.innerText=c;
+    y_select.innerText=val1;
+    if (rand==0){
+    c_select.innerText="Rock";
+        }
+    else if(rand==1){
+        c_select.innerText="Paper"
+    }
+    else if(rand==2){
+        c_select.innerText="Scrissors"
+    }
+    reslt.innerText=res;
+}
+function rock() {
+   decision("rock");
+}
+function paper() {
+   decision("paper");
+}
+function scrissors() {
+    decision("scrissors");
+}
+
+</script>
+</html>
